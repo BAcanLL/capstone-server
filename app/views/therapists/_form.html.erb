@@ -1,0 +1,47 @@
+<%= form_with(model: therapist, local: true) do |form| %>
+  <% if therapist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(therapist.errors.count, "error") %> prohibited this therapist from being saved:</h2>
+
+      <ul>
+      <% therapist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :therapist_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_digest %>
+    <%= form.text_field :password_digest, id: :therapist_password_digest %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, id: :therapist_first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, id: :therapist_last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prefix %>
+    <%= form.text_field :prefix, id: :therapist_prefix %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profession %>
+    <%= form.text_field :profession, id: :therapist_profession %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
