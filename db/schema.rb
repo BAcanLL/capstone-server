@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210208195028) do
+ActiveRecord::Schema.define(version: 20210226121928) do
+
+  create_table "emotes", force: :cascade do |t|
+    t.datetime "time"
+    t.string "value"
+    t.integer "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_emotes_on_patient_id"
+  end
+
+  create_table "medications", force: :cascade do |t|
+    t.datetime "time"
+    t.string "name"
+    t.integer "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_medications_on_patient_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.datetime "time"
+    t.string "text"
+    t.integer "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_notes_on_patient_id"
+  end
 
   create_table "patients", force: :cascade do |t|
     t.string "email"
@@ -22,6 +49,16 @@ ActiveRecord::Schema.define(version: 20210208195028) do
     t.date "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "therapist_id"
+    t.index ["therapist_id"], name: "index_patients_on_therapist_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "token"
+    t.integer "therapist_id"
+    t.integer "patient_id"
+    t.index ["patient_id"], name: "index_sessions_on_patient_id"
+    t.index ["therapist_id"], name: "index_sessions_on_therapist_id"
   end
 
   create_table "therapists", force: :cascade do |t|
@@ -33,6 +70,16 @@ ActiveRecord::Schema.define(version: 20210208195028) do
     t.string "profession"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.datetime "time"
+    t.string "value"
+    t.integer "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_words_on_patient_id"
   end
 
 end

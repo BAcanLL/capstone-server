@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 2021-02-26 04:19:28
+  text: MyString
+  patient: one
+
+two:
+  time: 2021-02-26 04:19:28
+  text: MyString
+  patient: two

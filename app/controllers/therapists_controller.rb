@@ -1,5 +1,6 @@
 class TherapistsController < ApplicationController
-  before_action :set_therapist, only: [:show, :edit, :update, :destroy]
+  before_action :set_therapist, only: [:show, :edit, :update, :destroy, :patients]
+  include SessionsHelper
 
   # GET /therapists
   # GET /therapists.json
@@ -12,10 +13,40 @@ class TherapistsController < ApplicationController
   def show
   end
 
+  def patients
+    therapist = get_therapist(params["token"])
+    if @therapist != therapist
+      render json: {message: "failed to authenticate"}, status: :unprocessable_entity
+    else
+      render json: therapist.patients
+    end
+  end
+
+
+  def login
+    @therapist = Therapist.find_by(email: params["email"].downcase)
+    if @therapist.authenticate
+      render :json => {
+        id: @therapist.id,
+        email: @therapist.email,
+        firstName: @therapist.first_name,
+        lastName: @therapist.last_name,
+        prefix: @therapist.prefix,
+        profession: @therapist.profession,
+        code: @therapist.code,
+        token: get_token(@therapist)
+       }
+    else
+      render json: {message: "failed to authenticate"}, status: :unprocessable_entity
+    end
+  end
+
+
   # GET /therapists/new
   def new
     @therapist = Therapist.new
   end
+
 
   # GET /therapists/1/edit
   def edit
@@ -24,16 +55,20 @@ class TherapistsController < ApplicationController
   # POST /therapists
   # POST /therapists.json
   def create
-    @therapist = Therapist.new(therapist_params)
-
-    respond_to do |format|
-      if @therapist.save
-        format.html { redirect_to @therapist, notice: 'Therapist was successfully created.' }
-        format.json { render :show, status: :created, location: @therapist }
-      else
-        format.html { render :new }
-        format.json { render json: @therapist.errors, status: :unprocessable_entity }
-      end
+    @therapist = Therapist.new(therapist_params.merge({code: create_code}))
+    if @therapist.save
+      render :json => {
+         id: @therapist.id,
+         email: @therapist.email,
+         firstName: @therapist.first_name,
+         lastName: @therapist.last_name,
+         prefix: @therapist.prefix,
+         profession: @therapist.profession,
+         code: @therapist.code,
+         token: get_token(@therapist)
+        }
+    else
+      render json: @therapist.errors, status: :unprocessable_entity
     end
   end
 
@@ -69,6 +104,14 @@ class TherapistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def therapist_params
-      params.require(:therapist).permit(:email, :password_digest, :first_name, :last_name, :prefix, :profession)
+      params.require(:therapist).permit(:email, :password, :password_confirmation, :first_name, :last_name, :prefix, :profession)
+    end
+
+    def create_code
+      code = SecureRandom.hex(3) # or whatever you chose like UUID tools
+      while Therapist.exists?(:code => code) do
+        code = SecureRandom.hex(3) # or whatever you chose like UUID tools
+      end
+      code
     end
 end

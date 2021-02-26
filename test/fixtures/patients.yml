@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
+  email: MyEmail@email.com
   password_digest: MyString
   first_name: MyString
   last_name: MyString
@@ -10,7 +10,7 @@ one:
   birthday: 2021-02-08
 
 two:
-  email: MyString
+  email: MyOtherEmail@email.com
   password_digest: MyString
   first_name: MyString
   last_name: MyString
