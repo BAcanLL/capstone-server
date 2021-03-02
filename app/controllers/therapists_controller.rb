@@ -55,6 +55,7 @@ class TherapistsController < ApplicationController
   # POST /therapists
   # POST /therapists.json
   def create
+    binding.pry
     @therapist = Therapist.new(therapist_params.merge({code: create_code}))
     if @therapist.save
       render :json => {
@@ -68,7 +69,8 @@ class TherapistsController < ApplicationController
          token: get_token(@therapist)
         }
     else
-      render json: @therapist.errors, status: :unprocessable_entity
+      render json: @therapist.errors, status: :conflict
+      # render json: @therapist.errors, status: :unprocessable_entity
     end
   end
 

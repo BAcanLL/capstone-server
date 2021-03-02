@@ -15537,3 +15537,208 @@ Processing by PatientsController#create as HTML
   [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
 Completed 422 Unprocessable Entity in 3197ms (Views: 0.2ms | ActiveRecord: 0.3ms)
   [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "therapists"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "therapists" ("email", "password_digest", "first_name", "last_name", "prefix", "profession", "created_at", "updated_at", "id") VALUES ('MyEmail@email.com', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', '2021-03-02 21:43:03.040357', '2021-03-02 21:43:03.040357', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "therapists" ("email", "password_digest", "first_name", "last_name", "prefix", "profession", "created_at", "updated_at", "id") VALUES ('MyOtherEmail@email.com', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', '2021-03-02 21:43:03.040357', '2021-03-02 21:43:03.040357', 298486374)[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "medications"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "medications" ("time", "name", "created_at", "updated_at", "id", "patient_id") VALUES ('2021-02-26 04:18:52', 'MyString', '2021-03-02 21:43:03.044778', '2021-03-02 21:43:03.044778', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "medications" ("time", "name", "created_at", "updated_at", "id", "patient_id") VALUES ('2021-02-26 04:18:52', 'MyString', '2021-03-02 21:43:03.044778', '2021-03-02 21:43:03.044778', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "words"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "words" ("time", "value", "created_at", "updated_at", "id", "patient_id") VALUES ('2021-02-26 04:17:13', 'MyString', '2021-03-02 21:43:03.048242', '2021-03-02 21:43:03.048242', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "words" ("time", "value", "created_at", "updated_at", "id", "patient_id") VALUES ('2021-02-26 04:17:13', 'MyString', '2021-03-02 21:43:03.048242', '2021-03-02 21:43:03.048242', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "emotes"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "emotes" ("time", "value", "created_at", "updated_at", "id", "patient_id") VALUES ('2021-02-26 04:04:32', 'MyString', '2021-03-02 21:43:03.050458', '2021-03-02 21:43:03.050458', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.0ms)[0m  [1m[32mINSERT INTO "emotes" ("time", "value", "created_at", "updated_at", "id", "patient_id") VALUES ('2021-02-26 04:04:32', 'MyString', '2021-03-02 21:43:03.050458', '2021-03-02 21:43:03.050458', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "notes"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "notes" ("time", "text", "created_at", "updated_at", "id", "patient_id") VALUES ('2021-02-26 04:19:28', 'MyString', '2021-03-02 21:43:03.053058', '2021-03-02 21:43:03.053058', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "notes" ("time", "text", "created_at", "updated_at", "id", "patient_id") VALUES ('2021-02-26 04:19:28', 'MyString', '2021-03-02 21:43:03.053058', '2021-03-02 21:43:03.053058', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "patients"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "patients" ("email", "password_digest", "first_name", "last_name", "height", "weight", "birthday", "created_at", "updated_at", "id") VALUES ('MyEmail@email.com', 'MyString', 'MyString', 'MyString', 1, 1, '2021-02-08', '2021-03-02 21:43:03.055327', '2021-03-02 21:43:03.055327', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "patients" ("email", "password_digest", "first_name", "last_name", "height", "weight", "birthday", "created_at", "updated_at", "id") VALUES ('MyOtherEmail@email.com', 'MyString', 'MyString', 'MyString', 1, 1, '2021-02-08', '2021-03-02 21:43:03.055327', '2021-03-02 21:43:03.055327', 298486374)[0m
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+PatientsControllerTest: test_should_create_patient
+--------------------------------------------------
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "patients"[0m
+Started POST "/patients" for 127.0.0.1 at 2021-03-02 13:43:03 -0800
+Processing by PatientsController#create as HTML
+  Parameters: {"patient"=>{"email"=>"unique@email.com", "first_name"=>"MyString", "last_name"=>"MyString", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "height"=>"1", "weight"=>"1", "birthday"=>"2021-02-08"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPatient Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "unique@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "patients" ("email", "password_digest", "first_name", "last_name", "height", "weight", "birthday", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "unique@email.com"], ["password_digest", "$2a$04$rgVUwU/G2qAVCURKABzqt.kUI2CnSSMebjwNKJwf8K8TS.N2W.KJC"], ["first_name", "MyString"], ["last_name", "MyString"], ["height", 1], ["weight", 1], ["birthday", "2021-02-08"], ["created_at", "2021-03-02 21:43:03.319316"], ["updated_at", "2021-03-02 21:43:03.319316"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."patient_id" = ? LIMIT ?[0m  [["patient_id", 980190963], ["LIMIT", 1]]
+  [1m[36mSession Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "73706f2e1d"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sessions" ("token", "patient_id") VALUES (?, ?)[0m  [["token", "73706f2e1d"], ["patient_id", 980190963]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 28ms (Views: 0.6ms | ActiveRecord: 1.9ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "patients"[0m
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------
+PatientsControllerTest: test_should_fail_to_create_patient
+----------------------------------------------------------
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started POST "/patients" for 127.0.0.1 at 2021-03-02 13:43:03 -0800
+Processing by PatientsController#create as HTML
+  Parameters: {"patient"=>{"email"=>"MyEmail@email.com", "first_name"=>"MyString", "last_name"=>"MyString", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "height"=>"1", "weight"=>"1", "birthday"=>"2021-02-08"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPatient Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "MyEmail@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 14ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+PatientTest: test_last_name_should_be_present
+---------------------------------------------
+  [1m[36mPatient Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+PatientTest: test_weight_should_be_present
+------------------------------------------
+  [1m[36mPatient Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+PatientTest: test_password_should_be_present
+--------------------------------------------
+  [1m[36mPatient Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------
+PatientTest: test_email_should_be_valid
+---------------------------------------
+  [1m[36mPatient Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "invalidemail"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+PatientTest: test_passwords_should_match_be_present
+---------------------------------------------------
+  [1m[36mPatient Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------
+PatientTest: test_first_name_should_be_present
+----------------------------------------------
+  [1m[36mPatient Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+PatientTest: test_height_should_be_present
+------------------------------------------
+  [1m[36mPatient Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+PatientTest: test_email_should_be_present
+-----------------------------------------
+  [1m[36mPatient Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "     "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------
+PatientTest: test_should_be_valid
+---------------------------------
+  [1m[36mPatient Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+TherapistsControllerTest: test_should_create_therapist
+------------------------------------------------------
+  [1m[36mTherapist Load (0.2ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "therapists"[0m
+Started POST "/therapists" for 127.0.0.1 at 2021-03-02 13:53:24 -0800
+Processing by TherapistsController#create as HTML
+  Parameters: {"therapist"=>{"email"=>"unique@email.com", "first_name"=>"MyString", "last_name"=>"MyString", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "prefix"=>"MyString", "profession"=>"MyString"}}
+  [1m[36mTherapist Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE "therapists"."code" = ? LIMIT ?[0m  [["code", "46b1f2"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "unique@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "therapists" ("email", "password_digest", "first_name", "last_name", "prefix", "profession", "created_at", "updated_at", "code") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "unique@email.com"], ["password_digest", "$2a$04$C3Mwv0y0Qd9XWrZNUN3eye3Ia/.Oe.n39skdbTiOWaMIcIStahAyi"], ["first_name", "MyString"], ["last_name", "MyString"], ["prefix", "MyString"], ["profession", "MyString"], ["created_at", "2021-03-02 21:53:28.062663"], ["updated_at", "2021-03-02 21:53:28.062663"], ["code", "46b1f2"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."therapist_id" = ? LIMIT ?[0m  [["therapist_id", 980190963], ["LIMIT", 1]]
+  [1m[36mSession Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "8b91c43a9f"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "sessions" ("token", "therapist_id") VALUES (?, ?)[0m  [["token", "8b91c43a9f"], ["therapist_id", 980190963]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3549ms (Views: 0.4ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "therapists"[0m
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTherapist Load (0.0ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------------
+TherapistsControllerTest: test_should_fail_to_create_therapist
+--------------------------------------------------------------
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started POST "/therapists" for 127.0.0.1 at 2021-03-02 13:53:28 -0800
+Processing by TherapistsController#create as HTML
+  Parameters: {"therapist"=>{"email"=>"MyEmail@email.com", "first_name"=>"MyString", "last_name"=>"MyString", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "prefix"=>"MyString", "profession"=>"MyString"}}
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE "therapists"."code" = ? LIMIT ?[0m  [["code", "9d5087"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "MyEmail@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 2810ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+TherapistTest: test_profession_should_be_present
+------------------------------------------------
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------
+TherapistTest: test_passwords_should_match_be_present
+-----------------------------------------------------
+  [1m[36mTherapist Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+TherapistTest: test_prefix_should_be_present
+--------------------------------------------
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+TherapistTest: test_first_name_should_be_present
+------------------------------------------------
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+TherapistTest: test_last_name_should_be_present
+-----------------------------------------------
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+TherapistTest: test_email_should_be_valid
+-----------------------------------------
+  [1m[36mTherapist Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "invalidemail"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+TherapistTest: test_email_should_be_present
+-------------------------------------------
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "     "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+TherapistTest: test_should_be_valid
+-----------------------------------
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------
+TherapistTest: test_password_should_be_present
+----------------------------------------------
+  [1m[36mTherapist Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "therapists" WHERE LOWER("therapists"."email") = LOWER(?) LIMIT ?[0m  [["email", "patient@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
