@@ -1,5 +1,6 @@
 class TherapistsController < ApplicationController
   before_action :set_therapist, only: [:show, :edit, :update, :destroy, :patients]
+  protect_from_forgery with: :null_session
   include SessionsHelper
 
   # GET /therapists
@@ -55,7 +56,6 @@ class TherapistsController < ApplicationController
   # POST /therapists
   # POST /therapists.json
   def create
-    binding.pry
     @therapist = Therapist.new(therapist_params.merge({code: create_code}))
     if @therapist.save
       render :json => {
@@ -106,6 +106,10 @@ class TherapistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def therapist_params
+      body = ActiveSupport::JSON.decode(request.body.read)
+      if body["therapist"]
+        return body["therapist"]
+      end
       params.require(:therapist).permit(:email, :password, :password_confirmation, :first_name, :last_name, :prefix, :profession)
     end
 

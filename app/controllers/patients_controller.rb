@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy, :emote, :note, :medication, :word]
+  protect_from_forgery with: :null_session
   include SessionsHelper
 
   # GET /patients/1
