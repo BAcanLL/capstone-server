@@ -15,7 +15,7 @@ class TherapistsController < ApplicationController
   end
 
   def patients
-    therapist = get_therapist(request.body.read["token"])
+    therapist = get_therapist(request_body["token"])
     if @therapist != therapist
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     else
@@ -25,7 +25,7 @@ class TherapistsController < ApplicationController
 
 
   def login
-    @therapist = Therapist.find_by(email: request.body.read["email"].downcase)
+    @therapist = Therapist.find_by(email: request_body["email"].downcase)
     if @therapist.authenticate
       render :json => {
         id: @therapist.id,
@@ -102,6 +102,10 @@ class TherapistsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_therapist
       @therapist = Therapist.find(params[:id])
+    end
+
+    def request_body
+      ActiveSupport::JSON.decode(request.body.read)
     end
 
     # Only allow a list of trusted parameters through.
