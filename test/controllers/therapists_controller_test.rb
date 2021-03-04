@@ -16,8 +16,8 @@ class TherapistsControllerTest < ActionDispatch::IntegrationTest
   # end
 
   test "should fail to create therapist" do
-    post therapists_url, params: {
-      therapist: {
+    post therapists_url,
+      params: {
         email: @therapist.email,
         first_name: @therapist.first_name,
         last_name: @therapist.last_name,
@@ -25,16 +25,16 @@ class TherapistsControllerTest < ActionDispatch::IntegrationTest
         password_confirmation: "foobar",
         prefix: @therapist.prefix,
         profession: @therapist.profession
-        }
-    }
+      },
+      as: :json
     assert(@response.status == 422)
     assert(@response.parsed_body["email"]==["has already been taken"])
   end
 
   test "should create therapist" do
     assert_difference('Therapist.count') do
-      post therapists_url, params: {
-        therapist: {
+      post therapists_url,
+        params: {
           email: "unique@email.com",
           first_name: @therapist.first_name,
           last_name: @therapist.last_name,
@@ -42,8 +42,8 @@ class TherapistsControllerTest < ActionDispatch::IntegrationTest
           password_confirmation: "foobar",
           prefix: @therapist.prefix,
           profession: @therapist.profession
-          }
-      }
+        },
+        as: :json
     end
     assert(@response.status == 200)
     assert(@response.parsed_body["id"] == Therapist.last.id)

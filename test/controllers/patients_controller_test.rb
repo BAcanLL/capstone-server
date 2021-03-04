@@ -6,8 +6,8 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should fail to create patient" do
-    post patients_url, params: {
-      patient: {
+    post patients_url,
+      params: {
         email: @patient.email,
         first_name: @patient.first_name,
         last_name: @patient.last_name,
@@ -16,16 +16,16 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
         height: @patient.height,
         weight: @patient.weight,
         birthday: @patient.birthday
-        }
-    }
+      },
+      as: :json
     assert(@response.status == 422)
     assert(@response.parsed_body["email"]==["has already been taken"])
   end
 
   test "should create patient" do
     assert_difference('Patient.count') do
-      post patients_url, params: {
-        patient: {
+      post patients_url,
+        params: {
           email: "unique@email.com",
           first_name: @patient.first_name,
           last_name: @patient.last_name,
@@ -34,8 +34,8 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
           height: @patient.height,
           weight: @patient.weight,
           birthday: @patient.birthday
-          }
-      }
+        },
+        as: :json
     end
     assert(@response.status == 200)
     assert(@response.parsed_body["id"] == Patient.last.id)

@@ -188,22 +188,48 @@ class PatientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def patient_params
-      params.require(:patient).permit(:email, :password, :password_confirmation, :first_name, :last_name, :height, :weight, :birthday)
+      body = ActiveSupport::JSON.decode(request.body.read)
+      {
+        email: body["email"],
+        password: body["password"],
+        password_confirmation: body["password_confirmation"],
+        first_name: body["first_name"],
+        last_name: body["last_name"],
+        height: body["height"],
+        weight: body["weight"],
+        birthday: body["birthday"],
+      }
     end
 
     def emote_params
-      params.permit(:time, :value)
+      body = ActiveSupport::JSON.decode(request.body.read)
+      {
+        time: body["time"],
+        value: body["value"],
+      }
     end
 
     def note_params
-      params.permit(:time, :text)
+      body = ActiveSupport::JSON.decode(request.body.read)
+      {
+        time: body["time"],
+        text: body["text"],
+      }
     end
 
     def medication_params
-      params.permit(:time, :name)
+      body = ActiveSupport::JSON.decode(request.body.read)
+      {
+        time: body["time"],
+        name: body["name"],
+      }
     end
 
     def word_params
-      params.permit(:time, :value)
+      body = ActiveSupport::JSON.decode(request.body.read)
+      {
+        time: body["time"],
+        value: body["value"],
+      }
     end
 end
