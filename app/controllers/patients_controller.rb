@@ -182,7 +182,7 @@ class PatientsController < ApplicationController
 
   def ecg_data
     patient = get_patient(request_body["token"])
-    @ecgs = @patient.ecgs&.last(request_body["limit"])
+    @ecgs = @patient.ecgs
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     elsif @ecgs.nil? || @ecgs.empty?
