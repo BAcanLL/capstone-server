@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :destroy, :emote, :note, :medication, :word]
+  before_action :set_patient, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
   protect_from_forgery with: :null_session
   include SessionsHelper
 
@@ -177,6 +177,31 @@ class PatientsController < ApplicationController
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     else
       render json: patient.therapist
+    end
+  end
+
+  def ecg_data
+    patient = get_patient(request_body["token"])
+    @ecgs = @patient.ecgs&.last(request_body["limit"])
+    if patient != @patient
+      render json: {message: "failed to authenticate"}, status: :unprocessable_entity
+    elsif @ecgs.nil? || @ecgs.empty?
+      render json: {message: "failed to find ecgs"}, status: :unprocessable_entity
+    else
+      data_ecgs = @ecgs.map do |ecg|
+        data = ecg.ecg_data
+        {
+          id: ecg.id,
+          recorded_date: ecg.recorded_data,
+          hr: data.hr,
+          hrv: data.hrv,
+          pnn50: data.pnn50,
+          nn50: data.nn50,
+          lfhf: data.lfhf,
+          anomaly: data.anomaly,
+        }
+      end
+      render json: data_ecgs
     end
   end
 

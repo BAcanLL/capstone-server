@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     match ':id/associate', to: 'patients#associate', via: [:post]
     match ':id/unassociate', to: 'patients#unassociate', via: [:post]
     match ':id/therapist', to: 'patients#therapist', via: [:post]
+    match ':id/ecg/store-raw', to: 'data#store_raw', via: [:post]
+    match ':id/ecg/store-data', to: 'data#store_data', via: [:post]
+    match ':id/ecg/raw', to: 'data#ecg_raw', via: [:post]
+    match ':id/ecg/data', to: 'data#ecg_data', via: [:post]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ecg: one
+  classification: MyString
+  symptoms: MyString
+  device: MyString
+  sample_rate: MyString
+  unit: MyString
+  values: MyString
+
+two:
+  ecg: two
+  classification: MyString
+  symptoms: MyString
+  device: MyString
+  sample_rate: MyString
+  unit: MyString
+  values: MyString

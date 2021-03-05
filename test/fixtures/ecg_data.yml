@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hr: 1
+  hrv: 1
+  pnn50: 1
+  nn50: 1
+  lfhf: 1
+  anomaly: false
+  ecg: one
+
+two:
+  hr: 1
+  hrv: 1
+  pnn50: 1
+  nn50: 1
+  lfhf: 1
+  anomaly: false
+  ecg: two
