@@ -20,10 +20,10 @@ class TherapistsController < ApplicationController
           ecg_raw.save!
         end
         render json: {message: "success"}
-      rescue
-        render json: {message: "failed to add records"}, status: :unprocessable_entity
       end
     end
+  rescue
+    render json: {message: "failed to add records"}, status: :unprocessable_entity
   end
 
   def store_data
