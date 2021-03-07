@@ -20,7 +20,18 @@ class TherapistsController < ApplicationController
     if @therapist != therapist
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     else
-      render json: therapist.patients
+      patients = therapist.patients.map do |patient|
+        {
+          email: @patient.email,
+          firstName: @patient.first_name,
+          lastName: @patient.last_name,
+          birthday: @patient.birthday,
+          height: @patient.height,
+          weight: @patient.weight,
+        }
+      end
+
+      render json: patients
     end
   end
 
