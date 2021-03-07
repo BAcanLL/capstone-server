@@ -55,7 +55,7 @@ class DataController < ApplicationController
         raw = ecg.ecg_raw
         {
           id: ecg.id,
-          recorded_date: ecg.recorded_data,
+          recorded_date: ecg.recorded_date,
           classification: raw.classification,
           symptoms: raw.symptoms,
           device: raw.device,
