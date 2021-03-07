@@ -177,7 +177,14 @@ class PatientsController < ApplicationController
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     else
-      render json: patient.therapist
+      @therapist = patient.therapist
+      render json: {
+        email: @therapist&.email,
+        firstName: @therapist&.first_name,
+        lastName: @therapist&.last_name,
+        prefix: @therapist&.prefix,
+        profession: @therapist&.profession,
+      }
     end
   end
 
