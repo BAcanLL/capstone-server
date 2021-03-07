@@ -23,8 +23,9 @@ class PatientsController < ApplicationController
   end
 
   def login
-    @patient = Patient.find_by(email: request_body["email"].downcase)
-    if @patient.authenticate(request_body["password"])
+    body = request_body
+    @patient = Patient.find_by(email: body["email"].downcase)
+    if @patient.authenticate(body["password"])
       render :json => {
         id: @patient.id,
         email: @patient.email,

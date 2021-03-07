@@ -1186,3 +1186,29 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 26ms (Views: 0.3ms | ActiveRecord: 2.8ms)
 
 
+Started POST "/patients/login" for ::1 at 2021-03-07 10:07:43 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#login as JSON
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."email" = ? LIMIT ?[0m  [["email", "sara@example.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.9ms)
+
+
+  
+JSON::ParserError (783: unexpected token at ''):
+  
+app/controllers/patients_controller.rb:261:in `request_body'
+app/controllers/patients_controller.rb:27:in `login'
+Started POST "/patients/login" for ::1 at 2021-03-07 10:08:22 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#login as JSON
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."email" = ? LIMIT ?[0m  [["email", "sara@example.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 126037ms (ActiveRecord: 0.9ms)
+
+
+  
+JSON::ParserError (783: unexpected token at ''):
+  
+app/controllers/patients_controller.rb:263:in `request_body'
+app/controllers/patients_controller.rb:27:in `login'
