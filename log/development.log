@@ -1335,3 +1335,118 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 68ms (Views: 4.1ms | ActiveRecord: 2.3ms)
 
 
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started POST "/patients/8/associate" for ::1 at 2021-03-07 11:40:51 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#associate as JSON
+  Parameters: {"id"=>"8"}
+Can't verify CSRF token authenticity.
+Completed 500 Internal Server Error in 26389ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/patients_controller.rb:150:in `associate'
+Started POST "/patients/8/associate" for ::1 at 2021-03-07 11:41:27 -0800
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#associate as JSON
+  Parameters: {"id"=>"8"}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 404 Not Found in 17ms (ActiveRecord: 0.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Patient with 'id'=8):
+  
+app/controllers/patients_controller.rb:217:in `set_patient'
+Started POST "/patients/1/associate" for ::1 at 2021-03-07 11:41:47 -0800
+Processing by PatientsController#associate as JSON
+  Parameters: {"id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.8ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?[0m  [["session_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Session Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?[0m  [["session_id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 35393ms (ActiveRecord: 2.7ms)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: patients.session_id: SELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?):
+  
+app/helpers/sessions_helper.rb:33:in `get_patient'
+app/controllers/patients_controller.rb:150:in `associate'
+Started POST "/patients/1/associate" for ::1 at 2021-03-07 11:42:30 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#associate as JSON
+  Parameters: {"id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?[0m  [["session_id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?[0m  [["session_id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 54381ms (ActiveRecord: 2.7ms)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: patients.session_id: SELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?):
+  
+app/helpers/sessions_helper.rb:33:in `get_patient'
+app/controllers/patients_controller.rb:150:in `associate'
+Started POST "/patients/1/associate" for ::1 at 2021-03-07 11:43:32 -0800
+Processing by PatientsController#associate as JSON
+  Parameters: {"id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?[0m  [["session_id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4300ms (ActiveRecord: 2.1ms)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: patients.session_id: SELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?):
+  
+app/helpers/sessions_helper.rb:34:in `get_patient'
+app/controllers/patients_controller.rb:150:in `associate'
+Started POST "/patients/1/associate" for ::1 at 2021-03-07 11:43:52 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#associate as JSON
+  Parameters: {"id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.5ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?[0m  [["session_id", 2], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.8ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?[0m  [["session_id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.5ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?[0m  [["session_id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 101380ms (ActiveRecord: 3.7ms)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: patients.session_id: SELECT  "patients".* FROM "patients" WHERE "patients"."session_id" = ? LIMIT ?):
+  
+app/helpers/sessions_helper.rb:34:in `get_patient'
+app/controllers/patients_controller.rb:150:in `associate'
+Started POST "/patients/1/associate" for ::1 at 2021-03-07 11:45:43 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#associate as JSON
+  Parameters: {"id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."code" = ? LIMIT ?[0m  [["code", "foobar"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPatient Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) AND ("patients"."id" != ?) LIMIT ?[0m  [["email", "sara@example.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "patients" SET "therapist_id" = ?, "updated_at" = ? WHERE "patients"."id" = ?[0m  [["therapist_id", 1], ["updated_at", "2021-03-07 19:45:43.770419"], ["id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 62ms (Views: 0.4ms | ActiveRecord: 4.2ms)
+
+

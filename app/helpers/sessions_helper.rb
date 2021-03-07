@@ -30,7 +30,7 @@ module SessionsHelper
   def get_patient(token)
     session = Session.find_by(token: token)
     return nil if session.nil?
-    session.patient
+    Patient.find(session.patient_id)
   end
 
   def create_token

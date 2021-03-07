@@ -1,5 +1,6 @@
 class Therapist < ApplicationRecord
   has_many :patients
+  has_one :session
   has_secure_password
   before_save { email.downcase! }
   validates :first_name, presence: true
