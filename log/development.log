@@ -1456,3 +1456,38 @@ Completed 200 OK in 62ms (Views: 0.4ms | ActiveRecord: 4.2ms)
   [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
   [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
   [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."therapist_id" = ? LIMIT ?[0m  [["therapist_id", 1], ["LIMIT", 11]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."therapist_id" = ? LIMIT ?[0m  [["therapist_id", 1], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.2ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTherapist Load (0.2ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."therapist_id" = ? LIMIT ?[0m  [["therapist_id", 1], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.3ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."therapist_id" = ? LIMIT ?[0m  [["therapist_id", 2], ["LIMIT", 1]]
+Started POST "/therapists/2/patients" for ::1 at 2021-03-07 12:05:26 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TherapistsController#patients as JSON
+  Parameters: {"id"=>"2"}
+Can't verify CSRF token authenticity.
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "d427c6bf96"], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 33ms (ActiveRecord: 1.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Therapist with 'id'=):
+  
+app/helpers/sessions_helper.rb:27:in `get_therapist'
+app/controllers/therapists_controller.rb:19:in `patients'
+Started POST "/therapists/2/patients" for ::1 at 2021-03-07 12:06:42 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TherapistsController#patients as JSON
+  Parameters: {"id"=>"2"}
+Can't verify CSRF token authenticity.
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "d427c6bf96"], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.5ms)[0m  [1m[34mSELECT "patients".* FROM "patients" WHERE "patients"."therapist_id" = ?[0m  [["therapist_id", 2]]
+Completed 200 OK in 61ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+

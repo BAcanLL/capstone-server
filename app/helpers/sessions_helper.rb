@@ -24,7 +24,7 @@ module SessionsHelper
   def get_therapist(token)
     session = Session.find_by(token: token)
     return nil if session.nil?
-    Therapist.find(session.patient_id)
+    Therapist.find(session.therapist_id)
   end
 
   def get_patient(token)
