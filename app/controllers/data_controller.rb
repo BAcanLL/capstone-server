@@ -24,7 +24,7 @@ class DataController < ApplicationController
       end
     end
   rescue
-    render json: {message: "failed to add records"}, status: :unprocessable_entity
+    render json: {message: "failed to add records"}, status: :unprocessale_entity
   end
 
   def store_data
