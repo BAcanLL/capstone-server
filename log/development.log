@@ -1223,3 +1223,24 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 54219ms (Views: 0.5ms | ActiveRecord: 1.8ms)
 
 
+Started POST "/patients/login" for ::1 at 2021-03-07 10:41:21 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#login as JSON
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 14ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Patient with 'id'=):
+  
+app/controllers/patients_controller.rb:217:in `set_patient'
+Started POST "/patients/login" for ::1 at 2021-03-07 10:42:33 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#login as JSON
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."email" = ? LIMIT ?[0m  [["email", "sara@example.com"], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
+Completed 200 OK in 4290ms (Views: 0.4ms | ActiveRecord: 1.7ms)
+
+
