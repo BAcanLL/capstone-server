@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   match 'patients/:id/ecg/store-raw', to: 'data#store_raw', via: [:post]
   match 'patients/:id/ecg/store-data', to: 'data#store_data', via: [:post]
   match 'patients/:id/ecg/raw', to: 'data#ecg_raw', via: [:post]
-  match 'patients/:id/ecg/data', to: 'data#ecg_data', via: [:post]
+  match 'patients/:id/ecg/data', to: 'patient#ecg_data', via: [:post]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'application#hello'
