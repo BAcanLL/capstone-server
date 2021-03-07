@@ -1,6 +1,6 @@
 class DataController < ApplicationController
   before_action :set_patient, only: [:store_raw, :store_data, :ecg_raw]
-  before_action :set_body, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
+  before_action :set_body, only: [:store_raw, :store_data, :ecg_raw]
 
   include SessionsHelper
 
@@ -28,7 +28,7 @@ class DataController < ApplicationController
   end
 
   def store_data
-    @ecg = @patient.ecgs.find(request_body["ecg_id"])
+    @ecg = @patient.ecgs.find(@body["ecg_id"])
     if !is_authenticated?
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     elsif @ecg.nil?
@@ -45,7 +45,7 @@ class DataController < ApplicationController
   end
 
   def ecg_raw
-    @ecgs = @patient.ecgs&.last(request_body["limit"])
+    @ecgs = @patient.ecgs&.last(@body["limit"])
     if !is_authenticated?
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     elsif @ecgs.nil? || @ecgs.empty?
@@ -69,47 +69,44 @@ class DataController < ApplicationController
   end
 
 private
+  def set_body
+    @body = ActiveSupport::JSON.decode(request.body.read)
+  end
 
   def set_patient
     @patient = Patient.find(params[:id])
   end
 
   def is_authenticated?
-    request_body["token"] == "doggos-go-bork"
+    @body["token"] == "doggos-go-bork"
   end
 
   def ecg_raw_params
-    body = request_body
     {
-      classification: body["classification"],
-      symptoms: body["symptoms"],
-      device: body["device"],
-      sample_rate: body["sample_rate"],
-      unit: body["unit"],
-      values: body["values"],
+      classification: @body["classification"],
+      symptoms: @body["symptoms"],
+      device: @body["device"],
+      sample_rate: @body["sample_rate"],
+      unit: @body["unit"],
+      values: @body["values"],
     }
   end
 
   def ecg_params
     {
       patient_id: @patient.id,
-      recorded_data: request_body["recorded_date"]
+      recorded_data: @body["recorded_date"]
     }
   end
 
   def ecg_data_params
-    body = request_body
     {
-      hr: body["hr"],
-      hrv: body["hrv"],
-      pnn50: body["pnn50"],
-      nn50: body["nn50"],
-      lfhf: body["lfhf"],
-      anomaly: body["anomaly"],
+      hr: @body["hr"],
+      hrv: @body["hrv"],
+      pnn50: @body["pnn50"],
+      nn50: @body["nn50"],
+      lfhf: @body["lfhf"],
+      anomaly: @body["anomaly"],
     }
-  end
-
-  def request_body
-    ActiveSupport::JSON.decode(request.body.read)
   end
 end
