@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :update, :therapist, :associate, :unssociate, :ecg_data, :destroy, :emote, :note, :medication, :word]
-  before_action :set_body, only: [:show, :create, :login, :therapist, :associate,:unssociate, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
+  before_action :set_patient, only: [:show, :update, :therapist, :associate, :unassociate, :ecg_data, :destroy, :emote, :note, :medication, :word]
+  before_action :set_body, only: [:show, :create, :login, :therapist, :associate,:unassociate, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
 
   include SessionsHelper
 
@@ -161,9 +161,7 @@ class PatientsController < ApplicationController
   end
 
   def unassociate
-    binding.pry
     patient = get_patient(@body["token"])
-    binding.pry
     patient.therapist_id = nil
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
