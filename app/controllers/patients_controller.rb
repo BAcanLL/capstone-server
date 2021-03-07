@@ -153,7 +153,13 @@ class PatientsController < ApplicationController
     else
       patient.therapist_id = therapist.id
       if patient.save
-        render json: {message: "success"}
+        render json: json: {
+          email: therapist&.email,
+          firstName: therapist&.first_name,
+          lastName: therapist&.last_name,
+          prefix: therapist&.prefix,
+          profession: therapist&.profession,
+        }
       else
         render json: {message: "failed"}, status: :unprocessable_entity
       end
