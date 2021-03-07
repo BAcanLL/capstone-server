@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :therapists, only: [:create] do
+  resources :therapists, only: [:create, :update, :destroy] do
   end
 
   match 'therapists/login', to: 'therapists#login', via: [:post]
   match 'therapists/:id/patients', to: 'therapists#patients', via: [:post]
 
-  resources :patients, only: [:create] do
+  resources :patients, only: [:create, :update, :destroy] do
   end
 
   match 'patients/login', to: 'patients#login', via: [:post]

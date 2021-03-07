@@ -1,11 +1,13 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
+  before_action :set_body, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
+
   include SessionsHelper
 
   # GET /patients/1
   # GET /patients/1.json
   def show
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     else
@@ -23,9 +25,8 @@ class PatientsController < ApplicationController
   end
 
   def login
-    body = request_body
-    @patient = Patient.find_by(email: body["email"].downcase)
-    if @patient.authenticate(body["password"])
+    @patient = Patient.find_by(email: @body["email"].downcase)
+    if @patient.authenticate(@body["password"])
       render :json => {
         id: @patient.id,
         email: @patient.email,
@@ -64,7 +65,7 @@ class PatientsController < ApplicationController
   # PATCH/PUT /patients/1
   # PATCH/PUT /patients/1.json
   def update
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     elsif @patient.update(patient_params)
@@ -86,7 +87,7 @@ class PatientsController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.json
   def destroy
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     elsif @patient.destroy
@@ -97,7 +98,7 @@ class PatientsController < ApplicationController
   end
 
   def emote
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     @emote = Emote.new(emote_params.merge(patient_id: @patient.id))
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
@@ -109,7 +110,7 @@ class PatientsController < ApplicationController
   end
 
   def word
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     @word = Word.new(word_params.merge(patient_id: @patient.id))
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
@@ -121,7 +122,7 @@ class PatientsController < ApplicationController
   end
 
   def medication
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     @medication = Medication.new(medication_params.merge(patient_id: @patient.id))
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
@@ -133,7 +134,7 @@ class PatientsController < ApplicationController
   end
 
   def note
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     @note = Note.new(note_params.merge(patient_id: @patient.id))
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
@@ -145,7 +146,7 @@ class PatientsController < ApplicationController
   end
 
   def associate
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     therapist = Therapist.find_by(code: params[:code])
     if patient != @patient || therapist.nil?
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
@@ -160,7 +161,7 @@ class PatientsController < ApplicationController
   end
 
   def unassociate
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     @patient.therapist_id = nil
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
@@ -172,7 +173,7 @@ class PatientsController < ApplicationController
   end
 
   def therapist
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     else
@@ -181,7 +182,7 @@ class PatientsController < ApplicationController
   end
 
   def ecg_data
-    patient = get_patient(request_body["token"])
+    patient = get_patient(@body["token"])
     @ecgs = @patient.ecgs
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
@@ -206,6 +207,10 @@ class PatientsController < ApplicationController
   end
 
   private
+    def set_body
+      @body = ActiveSupport::JSON.decode(request.body.read)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_patient
       @patient = Patient.find(params[:id])
@@ -213,52 +218,43 @@ class PatientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def patient_params
-      body = ActiveSupport::JSON.decode(request.body.read)
       {
-        email: body["email"],
-        password: body["password"],
-        password_confirmation: body["password_confirmation"],
-        first_name: body["first_name"],
-        last_name: body["last_name"],
-        height: body["height"],
-        weight: body["weight"],
-        birthday: body["birthday"],
+        email: @body["email"],
+        password: @body["password"],
+        password_confirmation: @body["password_confirmation"],
+        first_name: @body["first_name"],
+        last_name: @body["last_name"],
+        height: @body["height"],
+        weight: @body["weight"],
+        birthday: @body["birthday"],
       }
     end
 
     def emote_params
-      body = ActiveSupport::JSON.decode(request.body.read)
       {
-        time: body["time"],
-        value: body["value"],
+        time: @body["time"],
+        value: @body["value"],
       }
     end
 
     def note_params
-      body = ActiveSupport::JSON.decode(request.body.read)
       {
-        time: body["time"],
-        text: body["text"],
+        time: @body["time"],
+        text: @body["text"],
       }
     end
 
     def medication_params
-      body = ActiveSupport::JSON.decode(request.body.read)
       {
-        time: body["time"],
-        name: body["name"],
+        time: @body["time"],
+        name: @body["name"],
       }
     end
 
     def word_params
-      body = ActiveSupport::JSON.decode(request.body.read)
       {
-        time: body["time"],
-        value: body["value"],
+        time: @body["time"],
+        value: @body["value"],
       }
-    end
-
-    def request_body
-      ActiveSupport::JSON.decode(request.body.read)
     end
 end

@@ -1,5 +1,7 @@
 class TherapistsController < ApplicationController
   before_action :set_therapist, only: [:show, :edit, :update, :destroy, :patients]
+  before_action :set_body, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
+
   include SessionsHelper
 
   # GET /therapists
@@ -14,7 +16,7 @@ class TherapistsController < ApplicationController
   end
 
   def patients
-    therapist = get_therapist(request_body["token"])
+    therapist = get_therapist(@body["token"])
     if @therapist != therapist
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     else
@@ -24,7 +26,7 @@ class TherapistsController < ApplicationController
 
 
   def login
-    @therapist = Therapist.find_by(email: request_body["email"].downcase)
+    @therapist = Therapist.find_by(email: @body["email"].downcase)
     if @therapist.authenticate
       render :json => {
         id: @therapist.id,
@@ -103,13 +105,13 @@ class TherapistsController < ApplicationController
       @therapist = Therapist.find(params[:id])
     end
 
-    def request_body
-      ActiveSupport::JSON.decode(request.body.read)
+    def set_body
+      @body = ActiveSupport::JSON.decode(request.body.read)
     end
 
     # Only allow a list of trusted parameters through.
     def therapist_params
-      ActiveSupport::JSON.decode(request.body.read)
+      @body
     end
 
     def create_code
