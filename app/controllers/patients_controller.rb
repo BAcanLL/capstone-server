@@ -147,7 +147,7 @@ class PatientsController < ApplicationController
 
   def associate
     patient = get_patient(@body["token"])
-    therapist = Therapist.find_by(code: params[:code])
+    therapist = Therapist.find_by(code: @body["code"])
     if patient != @patient || therapist.nil?
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     else
