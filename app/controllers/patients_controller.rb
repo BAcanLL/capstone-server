@@ -158,7 +158,7 @@ class PatientsController < ApplicationController
           firstName: therapist&.first_name,
           lastName: therapist&.last_name,
           prefix: therapist&.prefix,
-          profession: therapist&.profession,
+          profession: therapist&.profession
         }
       else
         render json: {message: "failed"}, status: :unprocessable_entity
