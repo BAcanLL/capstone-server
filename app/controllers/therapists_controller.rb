@@ -1,6 +1,6 @@
 class TherapistsController < ApplicationController
   before_action :set_therapist, only: [:show, :edit, :update, :destroy, :patients]
-  before_action :set_body, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
+  before_action :set_body, only: [:show, :edit, :update, :destroy, :patients]
 
   include SessionsHelper
 

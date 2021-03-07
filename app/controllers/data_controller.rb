@@ -1,5 +1,7 @@
 class DataController < ApplicationController
   before_action :set_patient, only: [:store_raw, :store_data, :ecg_raw]
+  before_action :set_body, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
+
   include SessionsHelper
 
   def store_raw
