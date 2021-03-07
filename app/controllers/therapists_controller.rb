@@ -22,12 +22,12 @@ class TherapistsController < ApplicationController
     else
       patients = therapist.patients.map do |patient|
         {
-          email: @patient.email,
-          firstName: @patient.first_name,
-          lastName: @patient.last_name,
-          birthday: @patient.birthday,
-          height: @patient.height,
-          weight: @patient.weight,
+          email: patient.email,
+          firstName: patient.first_name,
+          lastName: patient.last_name,
+          birthday: patient.birthday,
+          height: patient.height,
+          weight: patient.weight,
         }
       end
 
