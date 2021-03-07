@@ -34,7 +34,7 @@ class DataController < ApplicationController
     elsif @ecg.nil?
       render json: {message: "failed to find ecg"}, status: :unprocessable_entity
     else
-      ecg_data = EcgData.new(ecg_data_params)
+      ecg_data = EcgDatum.new(ecg_data_params)
       ecg_data.ecg = @ecg
       if ecg_data.save
         render json: {message: "success"}
