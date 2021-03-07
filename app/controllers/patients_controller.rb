@@ -153,7 +153,7 @@ class PatientsController < ApplicationController
     else
       patient.therapist_id = therapist.id
       if patient.save
-        render json: json: {
+        render json: {
           email: therapist&.email,
           firstName: therapist&.first_name,
           lastName: therapist&.last_name,
