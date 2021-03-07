@@ -162,10 +162,10 @@ class PatientsController < ApplicationController
 
   def unassociate
     patient = get_patient(@body["token"])
-    @patient.therapist_id = nil
+    patient.therapist_id = nil
     if patient != @patient
       render json: {message: "failed to authenticate"}, status: :unprocessable_entity
-    elsif @patient.save
+    elsif patient.save
       render json: {message: "success"}
     else
       render json: {message: "failed"}, status: :unprocessable_entity

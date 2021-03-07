@@ -1491,3 +1491,18 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 61ms (Views: 0.3ms | ActiveRecord: 2.3ms)
 
 
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
+Started POST "/patients/1/therapist" for ::1 at 2021-03-07 12:15:15 -0800
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#therapist as JSON
+  Parameters: {"id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.2ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17844ms (Views: 0.5ms | ActiveRecord: 2.3ms)
+
+
