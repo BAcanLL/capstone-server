@@ -1,6 +1,5 @@
-class TherapistsController < ApplicationController
+class DataController < ApplicationController
   before_action :set_patient, only: [:store_raw, :store_data, :ecg_raw]
-  protect_from_forgery with: :null_session
   include SessionsHelper
 
   def store_raw

@@ -1,6 +1,5 @@
 class TherapistsController < ApplicationController
   before_action :set_therapist, only: [:show, :edit, :update, :destroy, :patients]
-  protect_from_forgery with: :null_session
   include SessionsHelper
 
   # GET /therapists

@@ -1,6 +1,5 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
-  protect_from_forgery with: :null_session
   include SessionsHelper
 
   # GET /patients/1
@@ -25,7 +24,7 @@ class PatientsController < ApplicationController
 
   def login
     @patient = Patient.find_by(email: request_body["email"].downcase)
-    if @patient.authenticate
+    if @patient.authenticate(request_body["password"])
       render :json => {
         id: @patient.id,
         email: @patient.email,
