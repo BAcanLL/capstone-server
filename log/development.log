@@ -1506,3 +1506,29 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 17844ms (Views: 0.5ms | ActiveRecord: 2.3ms)
 
 
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mSession Load (0.7ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
+Started POST "/patients/1/unassociate" for ::1 at 2021-03-07 12:28:23 -0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#unassociate as JSON
+  Parameters: {"id"=>"1"}
+Can't verify CSRF token authenticity.
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/patients_controller.rb:164:in `unassociate'
+Started POST "/patients/1/unassociate" for ::1 at 2021-03-07 12:28:53 -0800
+Processing by PatientsController#unassociate as JSON
+  Parameters: {"id"=>"1"}
+Can't verify CSRF token authenticity.
+Completed 500 Internal Server Error in 22628ms
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/patients_controller.rb:165:in `unassociate'
