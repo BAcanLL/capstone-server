@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
-  before_action :set_body, only: [:show, :edit, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
+  before_action :set_patient, only: [:show, :login, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
+  before_action :set_body, only: [:show, :login, :update, :ecg_data, :destroy, :emote, :note, :medication, :word]
 
   include SessionsHelper
 
