@@ -1,6 +1,10 @@
 class Patient < ApplicationRecord
   belongs_to :therapist, optional: true
   has_many :ecgs
+  has_many :emotes
+  has_many :words
+  has_many :medications
+  has_many :notes
   has_one :session
   has_secure_password
   before_save { email.downcase! }

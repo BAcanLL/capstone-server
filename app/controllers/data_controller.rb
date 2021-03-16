@@ -1,6 +1,6 @@
 class DataController < ApplicationController
-  before_action :set_patient, only: [:store_raw, :store_data, :ecg_raw]
-  before_action :set_body, only: [:store_raw, :store_data, :ecg_raw]
+  before_action :set_patient, only: [:store_raw, :store_data, :ecg_raw, :word]
+  before_action :set_body
 
   include SessionsHelper
 
@@ -41,6 +41,20 @@ class DataController < ApplicationController
       else
         render json: ecg_data.errors, status: :unprocessable_entity
       end
+    end
+  end
+
+  def word
+    if is_authenticated?
+      @word = Word.find(@body["id"])
+      @word.score = @body["score"]
+      if @word.save
+        render json: {message: "success"}
+      else
+        render json: {message: "failed to update"}, status: :unprocessable_entity
+      end
+    else
+      render json: {message: "failed to authenticate"}, status: :unprocessable_entity
     end
   end
 

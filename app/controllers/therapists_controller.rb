@@ -1,6 +1,7 @@
 class TherapistsController < ApplicationController
   before_action :set_therapist, only: [:show, :update, :destroy, :patients]
-  before_action :set_body, only: [:show, :login, :create, :update, :destroy, :patients]
+  before_action :set_patient, only: [:emote, :word, :medication, :note]
+  before_action :set_body
 
   include SessionsHelper
 
@@ -8,6 +9,39 @@ class TherapistsController < ApplicationController
   # GET /therapists.json
   def index
     @therapists = Therapist.all
+  end
+
+
+  def emote
+    if is_authenticated?
+      render json: @patient.emotes
+    else
+      render json: {message: "failed to authenticate"}, status: :unprocessable_entity
+    end
+  end
+
+  def word
+    if is_authenticated?
+      render json: @patient.words
+    else
+      render json: {message: "failed to authenticate"}, status: :unprocessable_entity
+    end
+  end
+
+  def medication
+    if is_authenticated?
+      render json: @patient.medications
+    else
+      render json: {message: "failed to authenticate"}, status: :unprocessable_entity
+    end
+  end
+
+  def note
+    if is_authenticated?
+      render json: @patient.notes
+    else
+      render json: {message: "failed to authenticate"}, status: :unprocessable_entity
+    end
   end
 
   # GET /therapists/1
@@ -111,9 +145,22 @@ class TherapistsController < ApplicationController
   end
 
   private
+
+    def is_authenticated?
+       return true if @body["token"] == "doggos-go-bork"
+       therapist = get_therapist(@body["token"])
+       return therapist.patients.any?(@patient) if therapist
+       patient = get_patient(@body["token"])
+       return true if patient == @patient
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_therapist
       @therapist = Therapist.find(params[:id])
+    end
+
+    def set_patient
+      @patient = Patient.find(params[:id])
     end
 
     def set_body

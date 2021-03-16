@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210305092154) do
+ActiveRecord::Schema.define(version: 20210316123646) do
 
   create_table "ecg_data", force: :cascade do |t|
     t.integer "hr"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20210305092154) do
     t.integer "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "score"
     t.index ["patient_id"], name: "index_words_on_patient_id"
   end
 
