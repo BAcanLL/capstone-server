@@ -1971,3 +1971,83 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 62ms (Views: 1.5ms | ActiveRecord: 3.0ms)
 
 
+Started POST "/patients/1/ecg/data" for ::1 at 2021-03-30 13:20:43 -0700
+Processing by PatientsController#ecg_data as */*
+  Parameters: {"token"=>"33a852b49e", "id"=>"1", "patient"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEcg Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "ecgs" WHERE "ecgs"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
+  [1m[36mEcg Load (0.1ms)[0m  [1m[34mSELECT "ecgs".* FROM "ecgs" WHERE "ecgs"."patient_id" = ?[0m  [["patient_id", 1]]
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 2.0ms)
+
+
+  
+NoMethodError (undefined method `ecg_data' for #<Ecg:0x00007fdb6c0eb8d0>
+Did you mean?  ecg_datum):
+  
+app/controllers/patients_controller.rb:210:in `block in ecg_data'
+app/controllers/patients_controller.rb:209:in `map'
+app/controllers/patients_controller.rb:209:in `ecg_data'
+Started POST "/patients/1/ecg/data" for ::1 at 2021-03-30 13:21:22 -0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#ecg_data as */*
+  Parameters: {"token"=>"33a852b49e", "id"=>"1", "patient"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEcg Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "ecgs" WHERE "ecgs"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
+  [1m[36mEcg Load (0.1ms)[0m  [1m[34mSELECT "ecgs".* FROM "ecgs" WHERE "ecgs"."patient_id" = ?[0m  [["patient_id", 1]]
+  [1m[36mEcgDatum Load (0.1ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 1], ["LIMIT", 1]]
+  [1m[36mEcgDatum Load (0.1ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 3.3ms)
+
+
+  
+NoMethodError (undefined method `hr' for nil:NilClass):
+  
+app/controllers/patients_controller.rb:214:in `block in ecg_data'
+app/controllers/patients_controller.rb:209:in `map'
+app/controllers/patients_controller.rb:209:in `ecg_data'
+Started POST "/patients/1/ecg/data" for ::1 at 2021-03-30 13:21:46 -0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#ecg_data as */*
+  Parameters: {"token"=>"33a852b49e", "id"=>"1", "patient"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEcg Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "ecgs" WHERE "ecgs"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
+  [1m[36mEcg Load (0.3ms)[0m  [1m[34mSELECT "ecgs".* FROM "ecgs" WHERE "ecgs"."patient_id" = ?[0m  [["patient_id", 1]]
+  [1m[36mEcgDatum Load (0.2ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 1], ["LIMIT", 1]]
+  [1m[36mEcgDatum Load (0.2ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 58093ms (ActiveRecord: 3.7ms)
+
+
+  
+NoMethodError (undefined method `hr' for nil:NilClass):
+  
+app/controllers/patients_controller.rb:215:in `block in ecg_data'
+app/controllers/patients_controller.rb:210:in `map'
+app/controllers/patients_controller.rb:210:in `ecg_data'
+Started POST "/patients/1/ecg/data" for ::1 at 2021-03-30 13:23:31 -0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PatientsController#ecg_data as */*
+  Parameters: {"token"=>"33a852b49e", "id"=>"1", "patient"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEcg Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "ecgs" WHERE "ecgs"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
+  [1m[36mEcg Load (0.2ms)[0m  [1m[34mSELECT "ecgs".* FROM "ecgs" WHERE "ecgs"."patient_id" = ?[0m  [["patient_id", 1]]
+  [1m[36mEcgDatum Load (0.1ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 1], ["LIMIT", 1]]
+  [1m[36mEcgDatum Load (0.1ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 2], ["LIMIT", 1]]
+  [1m[36mEcgDatum Load (0.1ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 3], ["LIMIT", 1]]
+  [1m[36mEcgDatum Load (0.1ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 4], ["LIMIT", 1]]
+  [1m[36mEcgDatum Load (0.1ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 5], ["LIMIT", 1]]
+  [1m[36mEcgDatum Load (0.1ms)[0m  [1m[34mSELECT  "ecg_data".* FROM "ecg_data" WHERE "ecg_data"."ecg_id" = ? LIMIT ?[0m  [["ecg_id", 6], ["LIMIT", 1]]
+Completed 200 OK in 67ms (Views: 0.5ms | ActiveRecord: 3.7ms)
+
+

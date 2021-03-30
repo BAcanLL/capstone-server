@@ -207,7 +207,8 @@ class PatientsController < ApplicationController
       render json: {message: "failed to find ecgs"}, status: :unprocessable_entity
     else
       data_ecgs = @ecgs.map do |ecg|
-        data = ecg.ecg_data
+        data = ecg.ecg_datum
+        next if data.nil?
         {
           id: ecg.id,
           recorded_date: ecg.recorded_data,
