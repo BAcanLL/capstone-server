@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210316123646) do
+ActiveRecord::Schema.define(version: 20210319120523) do
 
   create_table "ecg_data", force: :cascade do |t|
     t.integer "hr"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20210316123646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "therapist_id"
+    t.string "sex"
     t.index ["therapist_id"], name: "index_patients_on_therapist_id"
   end
 

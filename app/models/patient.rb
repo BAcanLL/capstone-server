@@ -13,6 +13,7 @@ class Patient < ApplicationRecord
   validates :height, presence: true
   validates :weight, presence: true
   validates :birthday, presence: true
+  validates :sex, presence: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,

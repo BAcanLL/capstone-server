@@ -17,6 +17,7 @@ class PatientsController < ApplicationController
         firstName: @patient.first_name,
         lastName: @patient.last_name,
         birthday: @patient.birthday,
+        sex: @patient.sex,
         height: @patient.height,
         weight: @patient.weight,
         token: get_token(@patient)
@@ -33,6 +34,7 @@ class PatientsController < ApplicationController
         firstName: @patient.first_name,
         lastName: @patient.last_name,
         birthday: @patient.birthday,
+        sex: @patient.sex,
         height: @patient.height,
         weight: @patient.weight,
         token: get_token(@patient)
@@ -52,6 +54,7 @@ class PatientsController < ApplicationController
          email: @patient.email,
          firstName: @patient.first_name,
          lastName: @patient.last_name,
+         sex: @patient.sex,
          birthday: @patient.birthday,
          height: @patient.height,
          weight: @patient.weight,
@@ -75,6 +78,7 @@ class PatientsController < ApplicationController
         firstName: @patient.first_name,
         lastName: @patient.last_name,
         birthday: @patient.birthday,
+        sex: @patient.sex,
         height: @patient.height,
         weight: @patient.weight,
         token: get_token(@patient)
@@ -237,6 +241,7 @@ class PatientsController < ApplicationController
         password_confirmation: @body["password_confirmation"],
         first_name: @body["first_name"],
         last_name: @body["last_name"],
+        sex: @body["sex"],
         height: @body["height"],
         weight: @body["weight"],
         birthday: @body["birthday"],
