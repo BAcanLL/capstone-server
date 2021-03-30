@@ -149,7 +149,7 @@ class TherapistsController < ApplicationController
     def is_authenticated?
        return true if @body["token"] == "doggos-go-bork"
        therapist = get_therapist(@body["token"])
-       return therapist.patients.any?(@patient) if therapist
+       return therapist.patients.include?(@patient) if therapist
        patient = get_patient(@body["token"])
        return true if patient == @patient
     end

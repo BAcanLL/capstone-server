@@ -1766,3 +1766,208 @@ Migrating to BackfillPatientSex (20210319120523)
             FROM sqlite_temp_master
             WHERE name='index_words_on_patient_id' AND type='index'
 [0m
+Started GET "/" for ::1 at 2021-03-30 12:52:11 -0700
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'hello' could not be found for ApplicationController):
+  
+actionpack (5.1.7) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.7) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.7) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.7) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:844:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.7) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.7) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/patients/1/words" for ::1 at 2021-03-30 12:53:20 -0700
+Processing by TherapistsController#word as */*
+  Parameters: {"token"=>"1df29b3b92", "id"=>"1", "therapist"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "1df29b3b92"], ["LIMIT", 1]]
+  [1m[36mCACHE Session Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "1df29b3b92"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 34ms (Views: 0.3ms | ActiveRecord: 2.2ms)
+
+
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."patient_id" = ? LIMIT ?[0m  [["patient_id", 1], ["LIMIT", 1]]
+Started POST "/patients/1/words" for ::1 at 2021-03-30 12:54:22 -0700
+Processing by TherapistsController#word as */*
+  Parameters: {"token"=>"33a852b49e", "id"=>"1", "therapist"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "33a852b49e"], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 7ms (ActiveRecord: 0.9ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Therapist with 'id'=):
+  
+app/helpers/sessions_helper.rb:27:in `get_therapist'
+app/controllers/therapists_controller.rb:151:in `is_authenticated?'
+app/controllers/therapists_controller.rb:24:in `word'
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTherapist Load (1.0ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPatient Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE LOWER("patients"."email") = LOWER(?) AND ("patients"."id" != ?) LIMIT ?[0m  [["email", "sara@example.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "patients" SET "therapist_id" = ?, "updated_at" = ? WHERE "patients"."id" = ?[0m  [["therapist_id", 1], ["updated_at", "2021-03-30 19:57:53.710581"], ["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTherapist Load (0.2ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" ORDER BY "patients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (1.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."therapist_id" = ? LIMIT ?[0m  [["therapist_id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" ORDER BY "sessions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started POST "/patients/1/words" for ::1 at 2021-03-30 12:59:01 -0700
+Processing by TherapistsController#word as */*
+  Parameters: {"token"=>"asdf", "id"=>"1", "therapist"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+  [1m[36mCACHE Session Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/patients/1/words" for ::1 at 2021-03-30 12:59:34 -0700
+Processing by TherapistsController#word as */*
+  Parameters: {"token"=>"asdf", "id"=>"1", "therapist"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+  [1m[36mCACHE Session Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/patients/1/words" for ::1 at 2021-03-30 13:00:13 -0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TherapistsController#word as */*
+  Parameters: {"token"=>"asdf", "id"=>"1", "therapist"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+  [1m[36mSession Load (0.8ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE (asdf) LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" ORDER BY "sessions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "sessions" ("token", "therapist_id") VALUES (?, ?)[0m  [["token", "asdf"], ["therapist_id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" ORDER BY "sessions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.2ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 81459ms (ActiveRecord: 4.2ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/therapists_controller.rb:153:in `is_authenticated?'
+app/controllers/therapists_controller.rb:25:in `word'
+Started POST "/patients/1/words" for ::1 at 2021-03-30 13:01:44 -0700
+Processing by TherapistsController#word as */*
+  Parameters: {"token"=>"asdf", "id"=>"1", "therapist"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3226ms (ActiveRecord: 1.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/therapists_controller.rb:153:in `is_authenticated?'
+app/controllers/therapists_controller.rb:25:in `word'
+Started POST "/patients/1/words" for ::1 at 2021-03-30 13:01:53 -0700
+Processing by TherapistsController#word as */*
+  Parameters: {"token"=>"asdf", "id"=>"1", "therapist"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.2ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Therapist Load (0.0ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Therapist Load (0.0ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT "patients".* FROM "patients" WHERE "patients"."therapist_id" = ?[0m  [["therapist_id", 1]]
+  [1m[36mCACHE Therapist Load (0.0ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."therapist_id" = ? LIMIT ?[0m  [["therapist_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Therapist Load (0.0ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Patient Load (0.0ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."therapist_id" = ? LIMIT ?[0m  [["therapist_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Therapist Load (0.0ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" ORDER BY "therapists"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPatient Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE "patients"."therapist_id" = ? AND "patients"."id" = ? LIMIT ?[0m  [["therapist_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 90361ms (ActiveRecord: 1.6ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/therapists_controller.rb:153:in `is_authenticated?'
+app/controllers/therapists_controller.rb:25:in `word'
+Started POST "/patients/1/words" for ::1 at 2021-03-30 13:03:42 -0700
+Processing by TherapistsController#word as */*
+  Parameters: {"token"=>"asdf", "id"=>"1", "therapist"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPatient Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE "patients"."therapist_id" = ? AND "patients"."id" = ? LIMIT ?[0m  [["therapist_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Load (0.2ms)[0m  [1m[34mSELECT "words".* FROM "words" WHERE "words"."patient_id" = ?[0m  [["patient_id", 1]]
+Completed 200 OK in 2343ms (Views: 1.7ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/patients/1/words" for ::1 at 2021-03-30 13:04:26 -0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TherapistsController#word as */*
+  Parameters: {"token"=>"asdf", "id"=>"1", "therapist"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT  "patients".* FROM "patients" WHERE "patients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."token" = ? LIMIT ?[0m  [["token", "asdf"], ["LIMIT", 1]]
+  [1m[36mTherapist Load (0.1ms)[0m  [1m[34mSELECT  "therapists".* FROM "therapists" WHERE "therapists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPatient Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "patients" WHERE "patients"."therapist_id" = ? AND "patients"."id" = ? LIMIT ?[0m  [["therapist_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Load (0.1ms)[0m  [1m[34mSELECT "words".* FROM "words" WHERE "words"."patient_id" = ?[0m  [["patient_id", 1]]
+Completed 200 OK in 62ms (Views: 1.5ms | ActiveRecord: 3.0ms)
+
+
