@@ -31,5 +31,6 @@ Rails.application.routes.draw do
   match 'patients/:id/ecg/data', to: 'patients#ecg_data', via: [:post]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  #
   root 'application#hello'
 end
